@@ -2,41 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Myne7x-Store Premium Design System - Purple & Gold Neon Theme */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Dark background system */
+    --background: 240 7% 8%;
+    --foreground: 315 100% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card system */
+    --card: 240 8% 12%;
+    --card-foreground: 315 100% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Popover system */
+    --popover: 240 8% 15%;
+    --popover-foreground: 315 100% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary purple system */
+    --primary: 270 95% 60%;
+    --primary-foreground: 315 100% 98%;
+    --primary-glow: 270 100% 75%;
+    --primary-dark: 270 85% 45%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Gold accent system */
+    --secondary: 45 100% 65%;
+    --secondary-foreground: 240 15% 10%;
+    --secondary-glow: 45 100% 80%;
+    --secondary-dark: 45 90% 50%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted system */
+    --muted: 240 8% 18%;
+    --muted-foreground: 240 15% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent system */
+    --accent: 315 85% 65%;
+    --accent-foreground: 240 15% 10%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive system */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 315 100% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Border and input system */
+    --border: 240 15% 25%;
+    --input: 240 15% 20%;
+    --ring: 270 95% 60%;
 
-    --radius: 0.5rem;
+    /* Design system values */
+    --radius: 0.75rem;
+
+    /* Neon glow effects */
+    --glow-primary: 0 0 20px hsl(270 95% 60% / 0.5);
+    --glow-secondary: 0 0 20px hsl(45 100% 65% / 0.5);
+    --glow-accent: 0 0 15px hsl(315 85% 65% / 0.4);
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(270 95% 60%), hsl(315 85% 65%));
+    --gradient-secondary: linear-gradient(135deg, hsl(45 100% 65%), hsl(50 100% 75%));
+    --gradient-background: linear-gradient(180deg, hsl(240 7% 8%), hsl(240 12% 12%));
+    --gradient-card: linear-gradient(145deg, hsl(240 8% 12%), hsl(240 10% 16%));
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Shadows */
+    --shadow-neon: 0 0 30px hsl(270 95% 60% / 0.3), 0 0 60px hsl(270 95% 60% / 0.1);
+    --shadow-gold: 0 0 25px hsl(45 100% 65% / 0.4), 0 0 50px hsl(45 100% 65% / 0.1);
+    --shadow-elegant: 0 10px 40px hsl(240 20% 5% / 0.8);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +135,129 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-background);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Neon glow utilities */
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+  
+  .glow-secondary {
+    box-shadow: var(--glow-secondary);
+  }
+  
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
+
+  /* Neon text effects */
+  .text-neon-primary {
+    color: hsl(var(--primary));
+    text-shadow: 0 0 10px hsl(var(--primary-glow) / 0.7);
+  }
+  
+  .text-neon-gold {
+    color: hsl(var(--secondary));
+    text-shadow: 0 0 10px hsl(var(--secondary-glow) / 0.7);
+  }
+
+  /* Hover animations */
+  .hover-glow-primary {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-glow-primary:hover {
+    box-shadow: var(--shadow-neon);
+    transform: translateY(-2px);
+  }
+  
+  .hover-glow-gold {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-glow-gold:hover {
+    box-shadow: var(--shadow-gold);
+    transform: translateY(-2px);
+  }
+
+  /* Loader animations */
+  .myne-loader {
+    position: relative;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .myne-loader::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-top: 3px solid hsl(var(--primary));
+    border-radius: 50%;
+    animation: myne-spin 1s linear infinite;
+  }
+  
+  .myne-loader::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+    border: 2px solid transparent;
+    border-bottom: 2px solid hsl(var(--secondary));
+    border-radius: 50%;
+    animation: myne-spin 0.8s linear infinite reverse;
+  }
+
+  @keyframes myne-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Pulse animation for notifications */
+  .pulse-neon {
+    animation: pulse-neon 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-neon {
+    0%, 100% {
+      box-shadow: 0 0 5px hsl(var(--primary) / 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.8), 0 0 30px hsl(var(--primary) / 0.4);
+    }
+  }
+
+  /* Alibaba-style product grid */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
   }
 }
